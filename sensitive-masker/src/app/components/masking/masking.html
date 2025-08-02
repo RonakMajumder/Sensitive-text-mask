@@ -1,9 +1,17 @@
-<h2>Sensitive Info Masker</h2>
+<h2>Real-Time Sensitive Info Masker</h2>
 
-<textarea
-  [(ngModel)]="text"
-  (input)="onInputChange()"
-  rows="10"
-  cols="50"
-  placeholder="Type something like email, phone, or credit card...">
-</textarea>
+<div class="textarea-wrapper">
+  <textarea
+    [value]="displayText"
+    (input)="onUserInput($event)"
+    rows="10"
+    cols="60"
+    placeholder="Type something like: Password: hunter2"
+  ></textarea>
+  <button class="eye-button" (click)="toggleVisibility()" type="button">
+    {{ toggleIcon }}
+  </button>
+</div>
+
+<h4>Captured Unmasked Output (for debug):</h4>
+<pre>{{ rawText }}</pre>
