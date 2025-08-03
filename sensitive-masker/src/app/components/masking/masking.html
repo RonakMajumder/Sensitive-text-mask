@@ -1,17 +1,22 @@
 <h2>Real-Time Sensitive Info Masker</h2>
 
-<div class="textarea-wrapper">
-  <textarea
-    [value]="displayText"
-    (input)="onUserInput($event)"
-    rows="10"
-    cols="60"
-    placeholder="Type something like: Password: hunter2"
-  ></textarea>
-  <button class="eye-button" (click)="toggleVisibility()" type="button">
-    {{ toggleIcon }}
-  </button>
+<div class="output-section">
+  <h3>Input (Instant Real-time Masking):</h3>
+  <div class="textarea-wrapper">
+    <textarea
+      #maskingTextarea
+      (beforeinput)="onBeforeInput($event)"
+      (input)="onUserInput($event)"
+      (keydown)="onKeyDown($event)"
+      rows="6"
+      cols="60"
+      placeholder="Try: password &quot;Password&quot; email &quot;user@example.com&quot;"
+    ></textarea>
+    <button class="eye-button" (click)="toggleVisibility()" type="button">
+      {{ toggleIcon }}
+    </button>
+  </div>
 </div>
 
-<h4>Captured Unmasked Output (for debug):</h4>
-<pre>{{ rawText }}</pre>
+<h4>Captured Raw Input (for debug):</h4>
+<pre>{{ debugRawText }}</pre>
